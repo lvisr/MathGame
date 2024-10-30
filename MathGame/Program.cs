@@ -4,10 +4,11 @@ class MathGame
     static String[] menuOptions = new string[] {"1", "2", "3", "4", "5", "6", "exit"};
     static int number1;
     static int number2;
+    static int result;
     static void Main()
     {
-        MathGame.DisplayMenu();
-        String? input = MathGame.GetMenuInput();
+        DisplayMenu();
+        String? input = GetMenuInput();
         Console.WriteLine($"Selected Option {input}");
         if (input is null)
             Console.WriteLine("Invalid input");
@@ -18,6 +19,15 @@ class MathGame
                 {
                     case "1":{
                         //Addition();
+                        Console.Clear();
+                        Console.WriteLine("*****  Addition  *****");
+                        Console.Write("\nPlease enter the first integer: ");
+                        number1 = GetInputNumber();
+                        Console.Write("\nPlease enter the second integer: ");
+                        number2 = GetInputNumber();
+                        result = number1 + number2;
+                        Console.WriteLine($"\n {number1} + {number2} = {result}");
+
                         break;
                     }
                     case "6":{
@@ -66,24 +76,26 @@ class MathGame
         return menuInput;
     }
 
-/*     static int GetInputNumber()
+    static int GetInputNumber()
     {
-		Console.Write("Please enter an integer: ");
-		string input = Console.ReadLine();
+		string? input;
 		int inputValue;
-		bool success = int.TryParse(input, out inputValue);
-		if (success)
-		{
-			Console.WriteLine($"Your input: {inputValue}");
-		}
-		else
-		{
-			Console.WriteLine($"Invalid Input.");
-		}
+        bool success = false;
 
-		Console.Write("Press [enter] to continue...");
-		Console.ReadLine();
-
-        return inputValue;
-    } */
+        while (!success)
+        {
+            input = Console.ReadLine();
+            success = Int32.TryParse(input, out inputValue);
+            if (success)
+            {   
+                Console.WriteLine($"Valid integer: {inputValue}");
+                return inputValue;
+            }
+            else
+            {
+                Console.Write($"\nInvalid input. Please enter a valid integer: ");
+            }
+        }
+        return 0;
+    }
 }
