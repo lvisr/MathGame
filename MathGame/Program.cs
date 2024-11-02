@@ -119,7 +119,7 @@ class MathGame
                         break;
                 }
                 if (!exit) {
-                Console.WriteLine("\nPress any key to continue...");
+                Console.WriteLine("\nPress [enter] to continue...");
                 Console.ReadLine();
                 }
             }
